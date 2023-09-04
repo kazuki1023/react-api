@@ -18,7 +18,7 @@ tags:
   - name: "users"
     description: "ユーザーの操作"
   - name: "posts"
-    description: "記事の操作"
+    description: "記事"
   - name: "shops"
     description: "店舗の操作"
 
@@ -60,5 +60,31 @@ paths:
           schema: { type: string }
       responses:
         "200":
+          description: "成功"
+  "/posts/{id}":
+    put:
+      summary: "記事の更新"
+      tags: ["posts"]
+      deprecated: false
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type:string }
+          example: "1"
+        - name: X-Api-key
+          in: header
+          required: true
+          description: "APIキーをヘッダーに付与"
+          schema: { type: string }
+          example: "xxx-xxx-xxx-xxx"
+        - name: token
+          in: cookie
+          description: "アクセストークン"
+          required: true
+          schema: { type: string }
+          example: "xxx-xxx-xxx"
+      responses:
+        "201":
           description: "成功"
 
