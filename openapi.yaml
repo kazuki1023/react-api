@@ -12,6 +12,16 @@ servers:
   description: "ローカル環境"
 - url: "http://sample.com"
   description: "本番環境"
+
+# APIを整理するためのタグ
+tags:
+  - name: "users"
+    description: "ユーザーの操作"
+  - name: "posts"
+    description: "記事の操作"
+  - name: "shops"
+    description: "店舗の操作"
+
 paths:
   "/api/v1/hello":
     get:
