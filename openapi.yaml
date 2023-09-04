@@ -22,10 +22,15 @@ tags:
   - name: "shops"
     description: "店舗の操作"
 
+# APIとして利用できるパスと操作を定義
+# メタデータ/リクエストパラメータ/リクエストボディー/レスポンスの４つで成り立ってる
 paths:
   "/api/v1/hello":
     get:
-      summary: "hello"
+      summary: "hello" #操作の概要
+      # description: 操作の詳細
+      tags: ["users"]
+      deprecated: false #廃止になったかどうかを定義
       responses:
         "200":
           description: "成功"
@@ -34,3 +39,26 @@ paths:
               schema:
                 type: string
                 example: "hello"
+  "/users":
+    get:
+      summary: "ユーザー一覧の取得"
+      tags: ["users"]
+      deprecated: false
+      responses:
+        "200":
+          description: "成功"
+  "/users/{userId}":
+    get:
+      summary: "ユーザーの取得"
+      tags: ["users"]
+      deprecated: false
+      #リクエストパラメータ
+      parameters:
+        - name: userId #パラメータ名
+          in: path #パラメータの場所を指定(query,header,path,cookie)
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: "成功"
+
