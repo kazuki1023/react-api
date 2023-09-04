@@ -87,4 +87,39 @@ paths:
       responses:
         "201":
           description: "成功"
+  "/posts":
+    post:
+      summary: "記事の新規投稿"
+      tags: ["posts"]
+      deprecated: false
+      requestBody:
+        description: "投稿内容"
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title: { type: string, example: "タイトル" }
+                content: { type: string, example: "記事本文" }
+      responses:
+        "201":
+          description: "成功"
+        "400":
+          description: "Client side error"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code: { type: string }
+                  type: { type: string }
+                  message: { type: string }
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        field: { type: string }
+                        code: { type: string }
 
